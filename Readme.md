@@ -37,17 +37,20 @@ Pour installer le projet, vous pouvez suivre les étapes suivantes :
 
 Pour exécuter le projet en local, vous pouvez suivre les étapes suivantes :
 
-1. Installez les dépendances du projet :
+1. Lancer un build en local (cette commande réalise également les tests) :
     ```bash
    gradle clean build
    ```
    
-2. Lancez l'application :
+2. Démarrer l'application :
    ```bash
    gradle run
    ```
 
 3. L'application sera accessible sur le port `8083`.
+
+
+Arrêtez l'application avant de passer à l'étape suivante.
 
 
 ## Build depuis Jenkins

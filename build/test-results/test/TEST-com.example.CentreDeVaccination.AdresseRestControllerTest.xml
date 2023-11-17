@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.example.CentreDeVaccination.AdresseRestControllerTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2023-11-17T01:54:43" hostname="pny-sci-d08" time="4.076">
+<testsuite name="com.example.CentreDeVaccination.AdresseRestControllerTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2023-11-17T14:56:42" hostname="pny-sci-d08" time="2.03">
   <properties/>
-  <testcase name="testCreateAdresse()" classname="com.example.CentreDeVaccination.AdresseRestControllerTest" time="3.903"/>
-  <testcase name="testUpdateAdresse()" classname="com.example.CentreDeVaccination.AdresseRestControllerTest" time="0.049"/>
-  <testcase name="testGetAdresseById()" classname="com.example.CentreDeVaccination.AdresseRestControllerTest" time="0.008"/>
-  <testcase name="testDeleteAdresse()" classname="com.example.CentreDeVaccination.AdresseRestControllerTest" time="0.043"/>
-  <testcase name="testGetAllAdresses()" classname="com.example.CentreDeVaccination.AdresseRestControllerTest" time="0.01"/>
-  <testcase name="testHandleObjectNotFoundException()" classname="com.example.CentreDeVaccination.AdresseRestControllerTest" time="0.011"/>
+  <testcase name="testCreateAdresse()" classname="com.example.CentreDeVaccination.AdresseRestControllerTest" time="1.976"/>
+  <testcase name="testUpdateAdresse()" classname="com.example.CentreDeVaccination.AdresseRestControllerTest" time="0.011"/>
+  <testcase name="testGetAdresseById()" classname="com.example.CentreDeVaccination.AdresseRestControllerTest" time="0.007"/>
+  <testcase name="testDeleteAdresse()" classname="com.example.CentreDeVaccination.AdresseRestControllerTest" time="0.005"/>
+  <testcase name="testGetAllAdresses()" classname="com.example.CentreDeVaccination.AdresseRestControllerTest" time="0.005"/>
+  <testcase name="testHandleObjectNotFoundException()" classname="com.example.CentreDeVaccination.AdresseRestControllerTest" time="0.008"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (C:\Users\Utilisateur\.gradle\caches\modules-2\files-2.1\net.bytebuddy\byte-buddy-agent\1.14.8\ae6ebe485f3bcd0a1e20241488a32e6400a501ef\byte-buddy-agent-1.14.8.jar)
 WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
