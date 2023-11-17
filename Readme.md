@@ -6,6 +6,16 @@ L'application permet de créer des rendez-vous de vaccination, de gérer les sto
 Lien vers le front-end : https://github.com/BillLeuna/centre-de-vaccination-front.git
 
 Les captures d'écran du fonctionnement sont disponibles dans le dossier `captures`
+
+## Technologies Utilisées
+
+1. Java 17: Langage de programmation principal.
+2. Spring Boot: Cadre de développement pour la création d'applications Java.
+3. Spring Data JPA: Couche d'abstraction pour l'accès aux données avec le modèle de programmation Java Persistence API (JPA).
+4. Spring MVC: Module pour la création de services Web RESTful.
+5. PostgreSQL: Système de gestion de base de données relationnelle.
+6. JUnit5 et Mockito: Outils de test.
+
 ## Préréquis
 
 Pour installer et exécuter le projet, vous devez disposer des éléments suivants :
@@ -50,7 +60,22 @@ Pour exécuter le projet en local, vous pouvez suivre les étapes suivantes :
 
 3. L'application sera accessible sur le port `8083`.
 
+## Tests
 
+Le backend est accompagné d'un ensemble de tests unitaires pour garantir la stabilité et la fiabilité des fonctionnalités. Les tests sont implémentés à l'aide de JUnit5 et Mockito. Ils couvrent divers aspects, notamment la logique métier des services, les contrôleurs, et les exceptions.
+
+Pour exécuter les tests, vous pouvez utiliser les commandes suivantes :
+```bash
+    # Exécution de tous les tests
+    gradle test
+    
+    # Exécution d'un test spécifique
+    gradle test --tests com.example.package.NomDuTest
+    
+    # Exemple
+    gradlew test --tests com.example.CentreDeVaccination.PatientRestControllerTest.testGetAllPatients
+```
+    
 ## Build depuis Jenkins
 
 Le projet est également accompagné d'un pipeline Jenkins qui permet de lancer des builds automatiques. Pour configurer
@@ -90,7 +115,37 @@ Le pipeline lance ensuite les conteneurs `centre-de-vaccination-api` et `centre-
 
 Une fois le pipeline terminé, l'application est accessible sur le port `8090`.
 
+## Structure du Projet
 
+Le backend suit une architecture modulaire avec les composants suivants :
+
+1. Contrôleurs (Controllers): Gèrent les requêtes HTTP et appellent les services appropriés.
+2. Services: Contiennent la logique métier.
+3. Entités (Entities): Représentent les objets persistants dans la base de données.
+4. Repositories: Interagissent avec la base de données.
+
+## API REST
+
+Le backend expose des endpoints pour interagir avec différentes entités. Voici quelques exemples d'endpoints :
+
+### Centres
+
+1. GET /public/centres: Recherche des centres d'une ville donnée.
+2. POST /admin/centres: Crée un nouveau centre.
+3. PUT /admin/centres/{id}: Met à jour les informations d'un centre existant.
+4. DELETE /admin/centres/{id}: Supprime un centre.
+
+### Administrateurs
+1. GET /admin/administrateurs: Récupère la liste des administrateurs.
+2. POST /admin/administrateurs: Crée un nouvel administrateur.
+3. PUT /admin/administrateurs/{id}: Met à jour les informations d'un administrateur.
+4. DELETE /admin/administrateurs/{id}: Supprime un administrateur.
+
+### Médecins
+1. GET /admin/medecins: Récupère la liste des médecins.
+2. POST /admin/medecins: Crée un nouveau médecin.
+3. PUT /admin/medecins/{id}: Met à jour les informations d'un médecin.
+4. DELETE /admin/medecins/{id}: Supprime un médecin.
 
 ## Contact
 
