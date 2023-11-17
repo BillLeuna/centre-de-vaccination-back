@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.CentreDeVaccination.PatientRestControllerTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2023-11-16T23:28:28" hostname="pny-sci-d08" time="0.067">
+  <properties/>
+  <testcase name="testGetDocteur()" classname="com.example.CentreDeVaccination.PatientRestControllerTest" time="0.044"/>
+  <testcase name="testGetPatientById()" classname="com.example.CentreDeVaccination.PatientRestControllerTest" time="0.003"/>
+  <testcase name="testCreatePatient()" classname="com.example.CentreDeVaccination.PatientRestControllerTest" time="0.002"/>
+  <testcase name="testGetAllPatients()" classname="com.example.CentreDeVaccination.PatientRestControllerTest" time="0.003"/>
+  <testcase name="testUpdatePatient()" classname="com.example.CentreDeVaccination.PatientRestControllerTest" time="0.005"/>
+  <testcase name="testDeletePatient()" classname="com.example.CentreDeVaccination.PatientRestControllerTest" time="0.002"/>
+  <testcase name="testHandleObjectNotFoundException()" classname="com.example.CentreDeVaccination.PatientRestControllerTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

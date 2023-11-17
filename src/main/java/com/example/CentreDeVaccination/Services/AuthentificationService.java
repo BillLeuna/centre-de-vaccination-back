@@ -38,8 +38,8 @@ public class AuthentificationService {
     public Authentification update(Long id, Authentification updatedAuthentification) {
         return authentificationRepository.findById(id)
                 .map(authentification -> {
-                    authentification.setEmail(authentification.getEmail());
-                    authentification.setMdp(authentification.getMdp());
+                    authentification.setEmail(updatedAuthentification.getEmail());
+                    authentification.setMdp(updatedAuthentification.getMdp());
 
                     return authentificationRepository.save(authentification);
                 })
