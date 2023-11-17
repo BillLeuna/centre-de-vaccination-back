@@ -61,7 +61,7 @@ le pipeline Jenkins, vous devez suivre les étapes suivantes :
     - Dans la page suivante, dans la partie Pipeline, sélectionnez `Pipeline script from SCM`
     - Dans SCM, sélectionnez `Git`
     - Dans repository, mettez le lien vers le dépôt Github de ce projet: `https://github.com/BillLeuna/centre-de-vaccination-back.git`
-    - Dans branch to build, mettez `*/release`
+    - Dans branch to build, mettez `*/release-mise-en-production`
     - Sauvegardez cette configuration
 
 
