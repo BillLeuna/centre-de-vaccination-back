@@ -1,10 +1,11 @@
 # Centre de Vaccination
 
 Le projet CentreDeVaccination est une application Java qui permet de gérer les vaccinations contre le COVID-19.
-L'application permet de créer des rendez-vous de vaccination, de gérer les stocks de vaccins et de suivre l'état d'avancement de la vaccination.
+L'application permet de créer des rendez-vous de vaccination, de gérer les stocks de vaccins et de suivre l'état d'avancement de la vaccination des patients.
 
 Lien vers le front-end : https://github.com/BillLeuna/centre-de-vaccination-front.git
 
+Les captures d'écran du fonctionnement sont disponibles dans le dossier `captures`
 ## Préréquis
 
 Pour installer et exécuter le projet, vous devez disposer des éléments suivants :
@@ -39,13 +40,9 @@ Pour exécuter le projet en local, vous pouvez suivre les étapes suivantes :
 
 1. Installez les dépendances du projet :
     ```bash
-   gradle build
+   gradle clean build
    ```
-
-2. Lancez les tests :
-   ```bash
-   gradle test
-   ```
+   
 2. Lancez l'application :
    ```bash
    gradle run
@@ -59,23 +56,41 @@ Pour exécuter le projet en local, vous pouvez suivre les étapes suivantes :
 Le projet est également accompagné d'un pipeline Jenkins qui permet de lancer des builds automatiques. Pour configurer
 le pipeline Jenkins, vous devez suivre les étapes suivantes :
 
-
-1. **Configuration de Jenkins:**
+1. **Configuration du Pipeline :**
     - Créez un pipeline Jenkins et nommez le `Gestion de centre de vaccination`
     - Dans la page suivante, dans la partie Pipeline, sélectionnez `Pipeline script from SCM`
     - Dans SCM, sélectionnez `Git`
     - Dans repository, mettez le lien vers le dépôt Github de ce projet: `https://github.com/BillLeuna/centre-de-vaccination-back.git`
-    - Dans branch to build, mettez `*/main`
+    - Dans branch to build, mettez `*/release`
+    - Sauvegardez cette configuration
 
-2. **Exécution du Pipeline:**
-    - Le pipeline ci-dessus effectue le build du backend et crée une image Docker.
-    - Assurez-vous que le chemin vers Gradle et le fichier Dockerfile est correct.
 
-3. **Points d'Attention:**
-    - Le conteneur ne doit pas s'exécuter en tant que root.
-    - Les prérequis de l'environnement pour builder un projet Gradle doivent être satisfaits.
-    - Le type de build utilisé est Gradle.
-    - L'artefact fabriqué (image de conteneur) est stocké localement.
+
+2. **Exécution du Pipeline :**
+    - Exécutez le Pipeline ci-dessus et appréciez les résultats
+
+
+## Documentation
+
+Le projet CentreDeVaccination est construit et déployé automatiquement sur Jenkins. Le pipeline Jenkins est défini dans le fichier Jenkinsfile.
+
+Le pipeline Jenkins suit les étapes suivantes :
+
+1. **Build du projet :** 
+
+Le pipeline commence par construire le projet à l'aide de Gradle. Il utilise la tâche `clean build` pour installer les dépendances du projet, compiler le code source et générer l'artefact final.
+
+2. **Vérification des conteneurs :**
+
+Le pipeline vérifie ensuite si les conteneurs `centre-de-vaccination-api` et `centre-de-vaccination-database` sont en cours d'exécution. Si les conteneurs existent, ils sont arrêtés et supprimés.
+
+3. **Lancement des conteneurs :**
+
+Le pipeline lance ensuite les conteneurs `centre-de-vaccination-api` et `centre-de-vaccination-database` à l'aide de `docker compose up -d`.
+
+Une fois le pipeline terminé, l'application est accessible sur le port `8090`.
+
+
 
 ## Contact
 

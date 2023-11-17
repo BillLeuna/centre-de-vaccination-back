@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.example.CentreDeVaccination.CentreDeVaccinationApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-11-16T23:28:28" hostname="pny-sci-d08" time="0.021">
+<testsuite name="com.example.CentreDeVaccination.CentreDeVaccinationApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-11-17T01:55:10" hostname="pny-sci-d08" time="0.042">
   <properties/>
-  <testcase name="contextLoads()" classname="com.example.CentreDeVaccination.CentreDeVaccinationApplicationTests" time="0.021"/>
-  <system-out><![CDATA[00:28:20.184 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.example.CentreDeVaccination.CentreDeVaccinationApplicationTests]: CentreDeVaccinationApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-00:28:20.403 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.example.CentreDeVaccination.App for test class com.example.CentreDeVaccination.CentreDeVaccinationApplicationTests
+  <testcase name="contextLoads()" classname="com.example.CentreDeVaccination.CentreDeVaccinationApplicationTests" time="0.042"/>
+  <system-out><![CDATA[02:54:49.074 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.example.CentreDeVaccination.CentreDeVaccinationApplicationTests]: CentreDeVaccinationApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+02:54:49.657 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.example.CentreDeVaccination.App for test class com.example.CentreDeVaccination.CentreDeVaccinationApplicationTests
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -13,23 +13,71 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v3.1.4)
 
-2023-11-17T00:28:21.196+01:00  INFO 25300 --- [    Test worker] .e.C.CentreDeVaccinationApplicationTests : Starting CentreDeVaccinationApplicationTests using Java 21.0.1 with PID 25300 (started by Utilisateur in C:\Users\Utilisateur\Documents\centre-de-vaccination-back)
-2023-11-17T00:28:21.196+01:00  INFO 25300 --- [    Test worker] .e.C.CentreDeVaccinationApplicationTests : No active profile set, falling back to 1 default profile: "default"
-2023-11-17T00:28:22.461+01:00  INFO 25300 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-11-17T00:28:22.620+01:00  INFO 25300 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 135 ms. Found 4 JPA repository interfaces.
-2023-11-17T00:28:23.630+01:00  INFO 25300 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-11-17T00:28:23.805+01:00  INFO 25300 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.9.Final
-2023-11-17T00:28:23.811+01:00  INFO 25300 --- [    Test worker] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
-2023-11-17T00:28:24.214+01:00  INFO 25300 --- [    Test worker] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
-2023-11-17T00:28:24.260+01:00  INFO 25300 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-11-17T00:28:24.299+01:00  INFO 25300 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2023-11-17T00:28:24.743+01:00  INFO 25300 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4a5fab78
-2023-11-17T00:28:24.748+01:00  INFO 25300 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2023-11-17T00:28:25.476+01:00  INFO 25300 --- [    Test worker] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
-2023-11-17T00:28:26.930+01:00  INFO 25300 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-11-17T00:28:27.217+01:00  INFO 25300 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-11-17T00:28:28.073+01:00  WARN 25300 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-11-17T00:28:28.721+01:00  INFO 25300 --- [    Test worker] .e.C.CentreDeVaccinationApplicationTests : Started CentreDeVaccinationApplicationTests in 7.993 seconds (process running for 12.686)
+2023-11-17T02:54:51.464+01:00  INFO 29828 --- [    Test worker] .e.C.CentreDeVaccinationApplicationTests : Starting CentreDeVaccinationApplicationTests using Java 21.0.1 with PID 29828 (started by Utilisateur in C:\Users\Utilisateur\Documents\centre-de-vaccination-back)
+2023-11-17T02:54:51.471+01:00  INFO 29828 --- [    Test worker] .e.C.CentreDeVaccinationApplicationTests : No active profile set, falling back to 1 default profile: "default"
+2023-11-17T02:54:55.731+01:00  INFO 29828 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-11-17T02:54:56.080+01:00  INFO 29828 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 300 ms. Found 4 JPA repository interfaces.
+2023-11-17T02:54:58.506+01:00  INFO 29828 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-11-17T02:54:58.973+01:00  INFO 29828 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.9.Final
+2023-11-17T02:54:58.983+01:00  INFO 29828 --- [    Test worker] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-11-17T02:54:59.790+01:00  INFO 29828 --- [    Test worker] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-11-17T02:54:59.861+01:00  INFO 29828 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-11-17T02:54:59.953+01:00  INFO 29828 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-11-17T02:55:01.138+01:00  INFO 29828 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4a5fab78
+2023-11-17T02:55:01.145+01:00  INFO 29828 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-11-17T02:55:03.150+01:00  INFO 29828 --- [    Test worker] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-11-17T02:55:05.679+01:00  INFO 29828 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+Hibernate: alter table if exists adresse drop constraint if exists FKen4g8cpfusyxs47hmqpj4fjsy
+2023-11-17T02:55:05.750+01:00  WARN 29828 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-17T02:55:05.751+01:00  WARN 29828 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : la relation « adresse » n'existe pas, poursuite du traitement
+Hibernate: alter table if exists adresse drop constraint if exists FK63b1qqmbvobw0lx2rp7chs1kf
+2023-11-17T02:55:05.754+01:00  WARN 29828 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-17T02:55:05.755+01:00  WARN 29828 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : la relation « adresse » n'existe pas, poursuite du traitement
+Hibernate: alter table if exists docteur drop constraint if exists FKsb1n52yol7r6gwgvqrnw6d6nb
+2023-11-17T02:55:05.757+01:00  WARN 29828 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-17T02:55:05.757+01:00  WARN 29828 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : la relation « docteur » n'existe pas, poursuite du traitement
+Hibernate: alter table if exists docteur_patients drop constraint if exists FKq4326g6w2woib0nnu9s0449bk
+2023-11-17T02:55:05.758+01:00  WARN 29828 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-17T02:55:05.759+01:00  WARN 29828 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : la relation « docteur_patients » n'existe pas, poursuite du traitement
+Hibernate: alter table if exists docteur_patients drop constraint if exists FK78jx8pucyx2hdhd3m11y5mji8
+2023-11-17T02:55:05.762+01:00  WARN 29828 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-17T02:55:05.765+01:00  WARN 29828 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : la relation « docteur_patients » n'existe pas, poursuite du traitement
+Hibernate: alter table if exists patients drop constraint if exists FKf2avn5fsg0tem0gyrqjbak1m7
+2023-11-17T02:55:05.772+01:00  WARN 29828 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-17T02:55:05.772+01:00  WARN 29828 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : la relation « patients » n'existe pas, poursuite du traitement
+Hibernate: alter table if exists patients drop constraint if exists FKkl4mi65ajt8vcrhwdketowe2v
+2023-11-17T02:55:05.774+01:00  WARN 29828 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-17T02:55:05.775+01:00  WARN 29828 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : la relation « patients » n'existe pas, poursuite du traitement
+Hibernate: drop table if exists adresse cascade
+2023-11-17T02:55:05.777+01:00  WARN 29828 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-17T02:55:05.777+01:00  WARN 29828 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : la table « adresse » n'existe pas, poursuite du traitement
+Hibernate: drop table if exists authentification cascade
+2023-11-17T02:55:05.778+01:00  WARN 29828 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-17T02:55:05.778+01:00  WARN 29828 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : la table « authentification » n'existe pas, poursuite du traitement
+Hibernate: drop table if exists docteur cascade
+2023-11-17T02:55:05.779+01:00  WARN 29828 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-17T02:55:05.779+01:00  WARN 29828 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : la table « docteur » n'existe pas, poursuite du traitement
+Hibernate: drop table if exists docteur_patients cascade
+2023-11-17T02:55:05.779+01:00  WARN 29828 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-17T02:55:05.780+01:00  WARN 29828 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : la table « docteur_patients » n'existe pas, poursuite du traitement
+Hibernate: drop table if exists patients cascade
+2023-11-17T02:55:05.780+01:00  WARN 29828 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-17T02:55:05.781+01:00  WARN 29828 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : la table « patients » n'existe pas, poursuite du traitement
+Hibernate: create table adresse (id_adresse serial not null, id_docteur integer unique, id_patient integer unique, zip_code integer, rue varchar(255), ville varchar(255), primary key (id_adresse))
+Hibernate: create table authentification (id_authentification serial not null, email varchar(255), mdp varchar(255), primary key (id_authentification))
+Hibernate: create table docteur (adresse_id_adresse integer unique, birth_date date, id_docteur serial not null, email varchar(255), first_name varchar(255), last_name varchar(255), primary key (id_docteur))
+Hibernate: create table docteur_patients (docteur_id_docteur integer not null, patients_id_patient integer not null unique)
+Hibernate: create table patients (adresse_id_adresse integer unique, date_de_naissance date, id_docteur integer, id_patient serial not null, email varchar(255), nom varchar(255), prenom varchar(255), primary key (id_patient))
+Hibernate: alter table if exists adresse add constraint FKen4g8cpfusyxs47hmqpj4fjsy foreign key (id_docteur) references docteur
+Hibernate: alter table if exists adresse add constraint FK63b1qqmbvobw0lx2rp7chs1kf foreign key (id_patient) references patients
+Hibernate: alter table if exists docteur add constraint FKsb1n52yol7r6gwgvqrnw6d6nb foreign key (adresse_id_adresse) references adresse
+Hibernate: alter table if exists docteur_patients add constraint FKq4326g6w2woib0nnu9s0449bk foreign key (patients_id_patient) references patients
+Hibernate: alter table if exists docteur_patients add constraint FK78jx8pucyx2hdhd3m11y5mji8 foreign key (docteur_id_docteur) references docteur
+Hibernate: alter table if exists patients add constraint FKf2avn5fsg0tem0gyrqjbak1m7 foreign key (adresse_id_adresse) references adresse
+Hibernate: alter table if exists patients add constraint FKkl4mi65ajt8vcrhwdketowe2v foreign key (id_docteur) references docteur
+2023-11-17T02:55:06.421+01:00  INFO 29828 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-11-17T02:55:08.416+01:00  WARN 29828 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-11-17T02:55:09.911+01:00  INFO 29828 --- [    Test worker] .e.C.CentreDeVaccinationApplicationTests : Started CentreDeVaccinationApplicationTests in 19.445 seconds (process running for 29.39)
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

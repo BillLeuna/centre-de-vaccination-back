@@ -11,7 +11,6 @@ pipeline {
         stage('Build project') {
             steps {
                 script {
-                    // Utilisation de 'bat' pour exécuter des commandes spécifiques à Windows
                     bat "gradle clean build"
                 }
             }
@@ -43,7 +42,6 @@ pipeline {
         stage('Start containers') {
             steps {
                 script {
-                    // Utilisation de 'bat' pour exécuter des commandes spécifiques à Windows
                     bat 'docker-compose up -d'
                 }
             }
