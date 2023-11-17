@@ -1,95 +1,114 @@
 # Centre de Vaccination
 
-Le projet CentreDeVaccination est une application Java qui permet de gérer les vaccinations contre le COVID-19.
-L'application permet de créer des rendez-vous de vaccination, de gérer les stocks de vaccins et de suivre l'état d'avancement de la vaccination des patients.
+
+## Introduction
+
+Le backend du projet Centre de Vaccination est développé en utilisant Java avec le framework Spring Boot. Il expose des API REST pour gérer les fonctionnalités relatives aux centres de vaccination, aux administrateurs, aux médecins, aux réservations, etc.
 
 Lien vers le front-end : https://github.com/BillLeuna/centre-de-vaccination-front.git
 
-Les captures d'écran du fonctionnement sont disponibles dans le dossier `captures`
-## Préréquis
 
-Pour installer et exécuter le projet, vous devez disposer des éléments suivants :
-
-1. Java 17
-2. Un IDE Java (IntelliJ IDEA, Eclipse, etc.)
-3. Git
-4. pgAdmin 
-5. Jenkins
-6. Docker
-
-## Installation
-
-Pour installer le projet, vous pouvez suivre les étapes suivantes :
-
-1. Clonez le projet depuis GitHub:
-   ```bash
-   git clone https://github.com/BillLeuna/centre-de-vaccination-back.git
-   ```
-
-2. Naviguez vers le répertoire du projet :
-   ```bash
-   cd centre-de-vaccination-back
-   ```
+## Technologies Utilisées
    
-3. Créez une base de données dans pgAdmin nommée `DataBaseTest`.
+   - Java 11: Langage de programmation principal. 
+   - Spring Boot: Cadre de développement pour la création d'applications Java. 
+   - Spring Data JPA: Couche d'abstraction pour l'accès aux données avec le modèle de programmation Java Persistence API (JPA). 
+   - Spring MVC: Module pour la création de services Web RESTful. 
+   - PostgreSQL: Système de gestion de base de données relationnelle. 
+   - JUnit5 et Mockito: Outils de test.
+
+## Structure du Projet
+
+Le backend suit une architecture modulaire avec les composants suivants :
 
 
-## Exécution
-
-Pour exécuter le projet en local, vous pouvez suivre les étapes suivantes :
-
-1. Installez les dépendances du projet :
-    ```bash
-   gradle clean build
-   ```
-   
-2. Lancez l'application :
-   ```bash
-   gradle run
-   ```
-
-3. L'application sera accessible sur le port `8083`.
+- Contrôleurs (Controllers): Gèrent les requêtes HTTP et appellent les services appropriés.
+- Services: Contiennent la logique métier.
+- Entités (Entities): Représentent les objets persistants dans la base de données.
+- Repositories: Interagissent avec la base de données.
 
 
-## Build depuis Jenkins
+## API REST
 
-Le projet est également accompagné d'un pipeline Jenkins qui permet de lancer des builds automatiques. Pour configurer
-le pipeline Jenkins, vous devez suivre les étapes suivantes :
+Le backend expose des endpoints pour interagir avec différentes entités. Voici quelques exemples d'endpoints :
 
-1. **Configuration du Pipeline :**
-    - Créez un pipeline Jenkins et nommez le `Gestion de centre de vaccination`
-    - Dans la page suivante, dans la partie Pipeline, sélectionnez `Pipeline script from SCM`
-    - Dans SCM, sélectionnez `Git`
-    - Dans repository, mettez le lien vers le dépôt Github de ce projet: `https://github.com/BillLeuna/centre-de-vaccination-back.git`
-    - Dans branch to build, mettez `*/release`
-    - Sauvegardez cette configuration
+### Centres
+
+- GET /public/centres: Recherche des centres d'une ville donnée.
+- POST /admin/centres: Crée un nouveau centre.
+- PUT /admin/centres/{id}: Met à jour les informations d'un centre existant.
+- DELETE /admin/centres/{id}: Supprime un centre.
+
+### Administrateurs
+
+- GET /admin/administrateurs: Récupère la liste des administrateurs.
+- POST /admin/administrateurs: Crée un nouvel administrateur.
+- PUT /admin/administrateurs/{id}: Met à jour les informations d'un administrateur.
+- DELETE /admin/administrateurs/{id}: Supprime un administrateur.
+
+### Médecins
+
+- GET /admin/medecins: Récupère la liste des médecins.
+- POST /admin/medecins: Crée un nouveau médecin.
+- PUT /admin/medecins/{id}: Met à jour les informations d'un médecin.
+- DELETE /admin/medecins/{id}: Supprime un médecin.
 
 
+## Tests
 
-2. **Exécution du Pipeline :**
-    - Exécutez le Pipeline ci-dessus et appréciez les résultats
+Le backend est accompagné d'un ensemble de tests unitaires pour garantir la stabilité et la fiabilité des fonctionnalités. Les tests sont implémentés à l'aide de JUnit5 et Mockito. Ils couvrent divers aspects, notamment la logique métier des services, les contrôleurs, et les exceptions.
+
+Pour exécuter les tests, vous pouvez utiliser les commandes suivantes :
+
+````bash
+    # Exécution de tous les tests
+    gradle test
+    
+    # Exécution d'un test spécifique
+    gradle test --tests com.example.package.NomDuTest
+    
+    # Exemple
+    gradlew test --tests com.example.CentreDeVaccination.PatientRestControllerTest.testGetAllPatients
+````
+
+## Base de Données
+
+### Configuration
+
+Le backend est configuré pour utiliser PostgreSQL comme système de gestion de base de données. Assurez-vous que vous avez une instance PostgreSQL en cours d'exécution.
+
+### Connection
+
+Les paramètres de connexion à la base de données peuvent être configurés dans le fichier application.properties. Assurez-vous de spécifier correctement l'URL de la base de données, le nom d'utilisateur et le mot de passe.
+
+````bash
+    url: jdbc:postgresql://localhost:5432/nom_de_la_base_de_donnees
+    username: nom_utilisateur
+    password: mot_de_passe
+````
+
+### Création de la Base de Données
+
+Au démarrage de l'application, la base de données est automatiquement créée (si elle n'existe pas déjà) grâce à la configuration Hibernate. Assurez-vous que l'utilisateur configuré a les droits nécessaires pour créer une base de données.
 
 
-## Documentation
+## Build et Exécution du Projet
 
-Le projet CentreDeVaccination est construit et déployé automatiquement sur Jenkins. Le pipeline Jenkins est défini dans le fichier Jenkinsfile.
+Le backend est construit à l'aide de Gradle, un système de gestion de build. Voici comment vous pouvez construire et lancer le projet :
 
-Le pipeline Jenkins suit les étapes suivantes :
+### Construction
 
-1. **Build du projet :** 
+```bash
+    gradle clean build
+```
 
-Le pipeline commence par construire le projet à l'aide de Gradle. Il utilise la tâche `clean build` pour installer les dépendances du projet, compiler le code source et générer l'artefact final.
+### Exécution
 
-2. **Vérification des conteneurs :**
+```bash
+    gradle run
+```
 
-Le pipeline vérifie ensuite si les conteneurs `centre-de-vaccination-api` et `centre-de-vaccination-database` sont en cours d'exécution. Si les conteneurs existent, ils sont arrêtés et supprimés.
-
-3. **Lancement des conteneurs :**
-
-Le pipeline lance ensuite les conteneurs `centre-de-vaccination-api` et `centre-de-vaccination-database` à l'aide de `docker compose up -d`.
-
-Une fois le pipeline terminé, l'application est accessible sur le port `8090`.
-
+L'application sera accessible à l'adresse http://localhost:8083 après son démarrage.
 
 
 ## Contact
