@@ -17,6 +17,16 @@ Lien vers le front-end : https://github.com/BillLeuna/centre-de-vaccination-fron
    - PostgreSQL: Système de gestion de base de données relationnelle. 
    - JUnit5 et Mockito: Outils de test.
 
+## Préréquis
+
+Pour installer et exécuter le projet, vous devez disposer des éléments suivants :
+
+1. Java 17
+2. Un IDE Java (IntelliJ IDEA, Eclipse, etc.)
+4. pgAdmin
+5. Gradle 
+
+
 ## Structure du Projet
 
 Le backend suit une architecture modulaire avec les composants suivants :
