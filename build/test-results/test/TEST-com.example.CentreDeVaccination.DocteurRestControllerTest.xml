@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.example.CentreDeVaccination.DocteurRestControllerTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2023-11-17T14:56:53" hostname="pny-sci-d08" time="0.105">
+<testsuite name="com.example.CentreDeVaccination.DocteurRestControllerTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2023-11-17T22:45:39" hostname="pny-sci-d08" time="0.177">
   <properties/>
-  <testcase name="testUpdateDocteur()" classname="com.example.CentreDeVaccination.DocteurRestControllerTest" time="0.059"/>
+  <testcase name="testUpdateDocteur()" classname="com.example.CentreDeVaccination.DocteurRestControllerTest" time="0.111"/>
   <testcase name="testGetDocteurById()" classname="com.example.CentreDeVaccination.DocteurRestControllerTest" time="0.006"/>
-  <testcase name="testGetAllDocteurs()" classname="com.example.CentreDeVaccination.DocteurRestControllerTest" time="0.007"/>
-  <testcase name="testDeleteDocteur()" classname="com.example.CentreDeVaccination.DocteurRestControllerTest" time="0.005"/>
-  <testcase name="testCreateDocteur()" classname="com.example.CentreDeVaccination.DocteurRestControllerTest" time="0.004"/>
-  <testcase name="testHandleObjectNotFoundException()" classname="com.example.CentreDeVaccination.DocteurRestControllerTest" time="0.012"/>
+  <testcase name="testGetAllDocteurs()" classname="com.example.CentreDeVaccination.DocteurRestControllerTest" time="0.01"/>
+  <testcase name="testDeleteDocteur()" classname="com.example.CentreDeVaccination.DocteurRestControllerTest" time="0.007"/>
+  <testcase name="testCreateDocteur()" classname="com.example.CentreDeVaccination.DocteurRestControllerTest" time="0.01"/>
+  <testcase name="testHandleObjectNotFoundException()" classname="com.example.CentreDeVaccination.DocteurRestControllerTest" time="0.008"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
