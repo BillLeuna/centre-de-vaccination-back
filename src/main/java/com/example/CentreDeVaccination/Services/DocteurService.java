@@ -40,9 +40,9 @@ public class DocteurService {
     public Docteur update(Long id, Docteur updatedDocteur) {
         return docteurRepository.findById(id)
                 .map(docteur -> {
-                    docteur.setFirstName(updatedDocteur.getFirstName());
-                    docteur.setLastName(updatedDocteur.getLastName());
-                    docteur.setBirthDate(updatedDocteur.getBirthDate());
+                    docteur.setPrenom(updatedDocteur.getPrenom());
+                    docteur.setNom(updatedDocteur.getNom());
+                    docteur.setTelephone(updatedDocteur.getTelephone());
                     docteur.setEmail(updatedDocteur.getEmail());
                     docteur.setAdresse(updatedDocteur.getAdresse());
                     docteur.setPatients(updatedDocteur.getPatients());
@@ -69,4 +69,8 @@ public class DocteurService {
         docteurRepository.delete(docteurToDelete);
     }
 
+    public Docteur findByEmail(String email) {
+        return docteurRepository.findByEmail(email)
+                .orElseThrow(() -> new ObjectNotFoundException("Docteur not found with email: " + email));
+    }
 }

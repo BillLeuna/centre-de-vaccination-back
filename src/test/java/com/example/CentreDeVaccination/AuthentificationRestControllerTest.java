@@ -1,6 +1,6 @@
 package com.example.CentreDeVaccination;
 
-import com.example.CentreDeVaccination.Controllers.AuthentificationController;
+import com.example.CentreDeVaccination.Controllers.AuthentificationRestController;
 import com.example.CentreDeVaccination.Exceptions.ObjectNotFoundException;
 import com.example.CentreDeVaccination.Models.Authentification;
 import com.example.CentreDeVaccination.Services.AuthentificationService;
@@ -21,7 +21,7 @@ class AuthentificationRestControllerTest {
     private AuthentificationService authentificationService;
 
     @InjectMocks
-    private AuthentificationController authentificationController;
+    private AuthentificationRestController authentificationController;
 
     @BeforeEach
     void setUp() {
