@@ -4,18 +4,10 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -37,14 +29,18 @@ public class Docteur {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_docteur")
     private Integer id;
-    @Column(name = "firstName")
-    private String firstName;
-    @Column(name = "lastName")
-    private String lastName;
-    @Column(name = "birthDate")
-    private Date birthDate;
+
+    @Column(name = "prenom")
+    private String prenom;
+
+    @Column(name = "nom")
+    private String nom;
+
     @Column(name = "email")
     private String email;
+
+    @Column(name = "telephone")
+    private String telephone;
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
     @JsonManagedReference(value = "adresse-docteur")

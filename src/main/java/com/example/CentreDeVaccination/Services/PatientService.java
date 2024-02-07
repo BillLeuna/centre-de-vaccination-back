@@ -82,4 +82,8 @@ public class PatientService {
         return patientRepository.findById(id).get().getDocteur();
     }
 
+    public Patient findByEmail(String email) {
+        return patientRepository.findByEmail(email)
+                .orElseThrow(() -> new ObjectNotFoundException("Patient not found with email: " + email));
+    }
 }

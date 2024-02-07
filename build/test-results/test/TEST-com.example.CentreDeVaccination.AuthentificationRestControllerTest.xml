@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.example.CentreDeVaccination.AuthentificationRestControllerTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2023-11-17T01:54:47" hostname="pny-sci-d08" time="0.255">
+<testsuite name="com.example.CentreDeVaccination.AuthentificationRestControllerTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2024-02-01T04:05:22" hostname="pny-sci-d08" time="2.008">
   <properties/>
-  <testcase name="testCreateAuthentification()" classname="com.example.CentreDeVaccination.AuthentificationRestControllerTest" time="0.172"/>
-  <testcase name="testDeleteAuthentification()" classname="com.example.CentreDeVaccination.AuthentificationRestControllerTest" time="0.009"/>
-  <testcase name="testUpdateAuthentification()" classname="com.example.CentreDeVaccination.AuthentificationRestControllerTest" time="0.017"/>
-  <testcase name="testGetAuthentificationById()" classname="com.example.CentreDeVaccination.AuthentificationRestControllerTest" time="0.009"/>
-  <testcase name="testHandleObjectNotFoundException()" classname="com.example.CentreDeVaccination.AuthentificationRestControllerTest" time="0.037"/>
+  <testcase name="testCreateAuthentification()" classname="com.example.CentreDeVaccination.AuthentificationRestControllerTest" time="1.945"/>
+  <testcase name="testDeleteAuthentification()" classname="com.example.CentreDeVaccination.AuthentificationRestControllerTest" time="0.011"/>
+  <testcase name="testUpdateAuthentification()" classname="com.example.CentreDeVaccination.AuthentificationRestControllerTest" time="0.01"/>
+  <testcase name="testGetAuthentificationById()" classname="com.example.CentreDeVaccination.AuthentificationRestControllerTest" time="0.01"/>
+  <testcase name="testHandleObjectNotFoundException()" classname="com.example.CentreDeVaccination.AuthentificationRestControllerTest" time="0.011"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

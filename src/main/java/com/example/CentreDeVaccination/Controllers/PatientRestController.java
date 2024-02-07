@@ -71,4 +71,9 @@ public class PatientRestController {
         return patientService.getDocteur(id);
     }
 
+    @GetMapping(path = "/getByEmail/{email}")
+    public ResponseEntity<Patient> getPatientByEmail(@PathVariable String email) {
+        Patient patient = patientService.findByEmail(email);
+        return new ResponseEntity<>(patient, HttpStatus.OK);
+    }
 }
