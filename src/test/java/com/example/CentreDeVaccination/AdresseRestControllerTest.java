@@ -35,8 +35,8 @@ class AdresseRestControllerTest {
     void testGetAllAdresses() {
         // Mocking data
         List<Adresse> mockAdresses = new ArrayList<>();
-        mockAdresses.add(new Adresse(1, "Paris", "Rue de la Paix", 75001, null, null));
-        mockAdresses.add(new Adresse(2, "Lyon", "Rue Bellecour", 69002, null, null));
+        mockAdresses.add(new Adresse(1, "Paris", "Rue de la Paix", 75001, null, null, null));
+        mockAdresses.add(new Adresse(2, "Lyon", "Rue Bellecour", 69002, null, null, null));
 
         // Mocking behavior
         when(adresseService.findAll()).thenReturn(mockAdresses);
@@ -55,7 +55,7 @@ class AdresseRestControllerTest {
     @Test
     void testGetAdresseById() {
         // Mocking data
-        Adresse mockAdresse = new Adresse(1, "Paris", "Rue de la Paix", 75001, null, null);
+        Adresse mockAdresse = new Adresse(1, "Paris", "Rue de la Paix", 75001, null, null, null);
 
         // Mocking behavior
         when(adresseService.findOneById(1L)).thenReturn(mockAdresse);
@@ -73,7 +73,7 @@ class AdresseRestControllerTest {
     @Test
     void testCreateAdresse() {
         // Mocking data
-        Adresse mockAdresse = new Adresse(1, "Paris", "Rue de la Paix", 75001, null, null);
+        Adresse mockAdresse = new Adresse(1, "Paris", "Rue de la Paix", 75001, null, null, null);
 
         // Mocking behavior
         when(adresseService.saveAdresse(any(Adresse.class))).thenReturn(mockAdresse);
@@ -92,7 +92,7 @@ class AdresseRestControllerTest {
     @Test
     void testUpdateAdresse() {
         // Mocking data
-        Adresse mockAdresse = new Adresse(1, "Paris", "Rue de la Paix", 75001, null, null);
+        Adresse mockAdresse = new Adresse(1, "Paris", "Rue de la Paix", 75001, null, null, null);
 
         // Mocking behavior
         when(adresseService.update(anyLong(), any(Adresse.class))).thenReturn(mockAdresse);

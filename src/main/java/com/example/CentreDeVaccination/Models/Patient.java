@@ -1,21 +1,14 @@
 package com.example.CentreDeVaccination.Models;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -27,7 +20,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString(of = "id")
-@EqualsAndHashCode(exclude = { "docteur", "adresse" })
+@EqualsAndHashCode(exclude = { "medecins", "adresse", "centres" })
 @Table(name = "Patients")
 @NoArgsConstructor
 @AllArgsConstructor
@@ -50,13 +43,18 @@ public class Patient {
     @Column(name = "email")
     private String email;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_adresse")
     @JsonManagedReference(value = "adresse-patient")
     private Adresse adresse;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_docteur")
-    @JsonBackReference(value = "patients-docteur")
-    private Docteur docteur;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonIgnore
+    @JsonBackReference(value = "patient-medecin")
+    private List<Medecin> medecins = new ArrayList<>();
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonBackReference(value = "patient-centre")
+    private List<Centre> centres = new ArrayList<>();
 
 }

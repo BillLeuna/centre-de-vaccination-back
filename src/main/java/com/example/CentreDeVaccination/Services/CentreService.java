@@ -1,6 +1,10 @@
 package com.example.CentreDeVaccination.Services;
 
-import com.example.CentreDeVaccination.Models.Docteur;
+import com.example.CentreDeVaccination.Models.Medecin;
+import com.example.CentreDeVaccination.Models.Patient;
+import com.example.CentreDeVaccination.Repositories.AdresseRepository;
+import com.example.CentreDeVaccination.Repositories.MedecinRepository;
+import com.example.CentreDeVaccination.Repositories.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.CentreDeVaccination.Exceptions.ObjectNotFoundException;
@@ -13,10 +17,19 @@ import java.util.List;
 public class CentreService {
 
     private final CentreRepository centreRepository;
+    private final AdresseRepository adresseRepository;
+    private final MedecinRepository medecinRepository;
+    private final PatientRepository patientRepository;
 
     @Autowired
-    public CentreService(CentreRepository centreRepository) {
+    public CentreService(CentreRepository centreRepository,
+                         AdresseRepository adresseRepository,
+                         MedecinRepository medecinRepository,
+                         PatientRepository patientRepository) {
         this.centreRepository = centreRepository;
+        this.adresseRepository = adresseRepository;
+        this.medecinRepository = medecinRepository;
+        this.patientRepository = patientRepository;
     }
 
     public Centre saveCentre(Centre centre) {
@@ -37,7 +50,24 @@ public class CentreService {
                 .map(centre -> {
                     centre.setNom(updatedCentre.getNom());
                     centre.setAdresse(updatedCentre.getAdresse());
-                    centre.setDocteurs(updatedCentre.getDocteurs());
+                    centre.setMedecins(updatedCentre.getMedecins());
+                    centre.setPatients(updatedCentre.getPatients());
+
+                    if (updatedCentre.getAdresse() != null) {
+                        adresseRepository.save(updatedCentre.getAdresse());
+                    }
+
+                    if (updatedCentre.getMedecins() != null) {
+                        for (Medecin medecin : updatedCentre.getMedecins()) {
+                            medecinRepository.save(medecin);
+                        }
+                    }
+
+                    if (updatedCentre.getPatients() != null) {
+                        for (Patient patient : updatedCentre.getPatients()) {
+                            patientRepository.save(patient);
+                        }
+                    }
 
                     return centreRepository.save(centre);
                 })
@@ -47,6 +77,25 @@ public class CentreService {
     public void delete(long id) {
         Centre centreToDelete = centreRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Centre not found!"));
+
+        if (centreToDelete.getAdresse() != null) {
+            centreToDelete.getAdresse().setCentre(null);
+            adresseRepository.save(centreToDelete.getAdresse());
+        }
+
+        if (centreToDelete.getMedecins() != null) {
+            for (Medecin medecin : centreToDelete.getMedecins()) {
+                medecin.setCentre(null);
+                medecinRepository.save(medecin);
+            }
+        }
+
+        if (centreToDelete.getPatients() != null) {
+            for (Patient patient : centreToDelete.getPatients()) {
+                patient.getCentres().remove(centreToDelete);
+                patientRepository.save(patient);
+            }
+        }
 
         centreRepository.delete(centreToDelete);
     }

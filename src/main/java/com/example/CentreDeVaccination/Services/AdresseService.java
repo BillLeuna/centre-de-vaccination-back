@@ -2,12 +2,16 @@ package com.example.CentreDeVaccination.Services;
 
 import java.util.List;
 
+import com.example.CentreDeVaccination.Models.Centre;
+import com.example.CentreDeVaccination.Repositories.CentreRepository;
+import com.example.CentreDeVaccination.Repositories.MedecinRepository;
+import com.example.CentreDeVaccination.Repositories.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.CentreDeVaccination.Exceptions.ObjectNotFoundException;
 import com.example.CentreDeVaccination.Models.Adresse;
-import com.example.CentreDeVaccination.Models.Docteur;
+import com.example.CentreDeVaccination.Models.Medecin;
 import com.example.CentreDeVaccination.Models.Patient;
 import com.example.CentreDeVaccination.Repositories.AdresseRepository;
 
@@ -15,15 +19,19 @@ import com.example.CentreDeVaccination.Repositories.AdresseRepository;
 public class AdresseService {
 
     public AdresseRepository adresseRepository;
-    public DocteurService docteurService;
-    public PatientService patientService;
+    public MedecinRepository medecinRepository;
+    public PatientRepository patientRepository;
+    public CentreRepository centreRepository;
 
     @Autowired
-    public AdresseService(AdresseRepository adresseRepository, DocteurService docteurService,
-            PatientService patientService) {
+    public AdresseService(AdresseRepository adresseRepository,
+                          MedecinRepository medecinRepository,
+                          PatientRepository patientRepository,
+                          CentreRepository centreRepository) {
         this.adresseRepository = adresseRepository;
-        this.docteurService = docteurService;
-        this.patientService = patientService;
+        this.medecinRepository = medecinRepository;
+        this.patientRepository = patientRepository;
+        this.centreRepository = centreRepository;
     }
 
     public AdresseService() {
@@ -49,44 +57,48 @@ public class AdresseService {
                     adresse.setVille(updatedAdresse.getVille());
                     adresse.setRue(updatedAdresse.getRue());
                     adresse.setZip_code(updatedAdresse.getZip_code());
-                    adresse.setDocteur(updatedAdresse.getDocteur());
                     adresse.setPatient(updatedAdresse.getPatient());
+                    adresse.setCentre(updatedAdresse.getCentre());
+                    adresse.setMedecins(updatedAdresse.getMedecins());
 
-                    UpdateDocteurAdresse(updatedAdresse);
-                    UpdatePatientAdresse(updatedAdresse);
+                    if (updatedAdresse.getMedecins() != null) {
+                        for (Medecin medecin : updatedAdresse.getMedecins()) {
+                            medecinRepository.save(medecin);
+                        }
+                    }
+
+                    if (updatedAdresse.getPatient() != null) {
+                        patientRepository.save(updatedAdresse.getPatient());
+                    }
+
+                    if (updatedAdresse.getCentre() != null) {
+                        centreRepository.save(updatedAdresse.getCentre());
+                    }
 
                     return adresseRepository.save(adresse);
                 })
                 .orElseThrow(() -> new RuntimeException("Adresse non trouvée !"));
     }
 
-    private void UpdateDocteurAdresse(Adresse updatedAdresse) {
-        if (updatedAdresse.getDocteur() != null) {
-            Docteur docteur = updatedAdresse.getDocteur();
-            docteur.setAdresse(updatedAdresse);
-            docteurService.update(updatedAdresse.getDocteur().getId().longValue(), docteur);
-        }
-    }
-
-    private void UpdatePatientAdresse(Adresse updatedAdresse) {
-        if (updatedAdresse.getPatient() != null) {
-            Patient patient = updatedAdresse.getPatient();
-            patient.setAdresse(updatedAdresse);
-            patientService.update(updatedAdresse.getPatient().getId().longValue(), patient);
-        }
-    }
-
     public void delete(Long id) {
         Adresse adresseToDelete = adresseRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Adresse non trouvée !"));
 
-        // Dissocier l'adresse des entités associées (Docteur et Patient) si nécessaire
-        if (adresseToDelete.getDocteur() != null) {
-            adresseToDelete.getDocteur().setAdresse(null);
+        if (adresseToDelete.getMedecins() != null) {
+            for (Medecin medecin : adresseToDelete.getMedecins()) {
+                medecin.getCentre().setAdresse(null);
+                medecinRepository.save(medecin);
+            }
         }
 
         if (adresseToDelete.getPatient() != null) {
             adresseToDelete.getPatient().setAdresse(null);
+            patientRepository.save(adresseToDelete.getPatient());
+        }
+
+        if (adresseToDelete.getCentre() != null) {
+            adresseToDelete.getCentre().setAdresse(null);
+            centreRepository.save(adresseToDelete.getCentre());
         }
 
         adresseRepository.delete(adresseToDelete);

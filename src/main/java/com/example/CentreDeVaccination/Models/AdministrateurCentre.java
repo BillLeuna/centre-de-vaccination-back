@@ -28,7 +28,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString(of = "id")
-@EqualsAndHashCode(exclude = {"centre", "docteur"})
+@EqualsAndHashCode(exclude = {"centre", "medecin"})
 @Table(name = "AdministrateursCentre")
 @NoArgsConstructor
 @AllArgsConstructor
@@ -54,7 +54,7 @@ public class AdministrateurCentre {
     private Centre centre;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonManagedReference(value = "docteur-administrateurCentre")
-    private List<Docteur> docteur = new ArrayList<>();
+    @JsonManagedReference(value = "medecin-administrateurCentre")
+    private List<Medecin> medecin = new ArrayList<>();
 
 }

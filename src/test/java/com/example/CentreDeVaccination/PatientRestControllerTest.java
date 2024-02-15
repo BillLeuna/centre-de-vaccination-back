@@ -2,7 +2,7 @@ package com.example.CentreDeVaccination;
 
 import com.example.CentreDeVaccination.Controllers.PatientRestController;
 import com.example.CentreDeVaccination.Exceptions.ObjectNotFoundException;
-import com.example.CentreDeVaccination.Models.Docteur;
+import com.example.CentreDeVaccination.Models.Medecin;
 import com.example.CentreDeVaccination.Models.Patient;
 import com.example.CentreDeVaccination.Services.PatientService;
 import org.junit.jupiter.api.BeforeEach;
@@ -134,13 +134,13 @@ class PatientRestControllerTest {
     @Test
     void testGetDocteur() {
         // Mocking data
-        Docteur mockDocteur = new Docteur(1, "Dr. Smith", "John", Date.valueOf("1980-05-10"), "dr.smith@example.com", null, new ArrayList<>());
+        Medecin mockDocteur = new Medecin(1, "Dr. Smith", "John", Date.valueOf("1980-05-10"), "dr.smith@example.com", null, new ArrayList<>());
 
         // Mocking behavior
         when(patientService.getDocteur(anyLong())).thenReturn(mockDocteur);
 
         // Testing
-        Docteur response = patientController.getDocteur(1L);
+        Medecin response = patientController.getDocteur(1L);
 
         // Verifying the result
         assertEquals(mockDocteur, response);

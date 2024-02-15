@@ -1,10 +1,10 @@
 package com.example.CentreDeVaccination.Models;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.*;
@@ -19,15 +19,15 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString(of = "id")
-@EqualsAndHashCode(exclude = { "patients", "adresse" })
-@Table(name = "Docteur")
+@EqualsAndHashCode(exclude = { "patients", "centre" })
+@Table(name = "Medecin")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Docteur {
+public class Medecin {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_docteur")
+    @Column(name = "id_medecin")
     private Integer id;
 
     @Column(name = "prenom")
@@ -42,12 +42,14 @@ public class Docteur {
     @Column(name = "telephone")
     private String telephone;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
-    @JsonManagedReference(value = "adresse-docteur")
-    private Adresse adresse;
-
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JsonManagedReference(value = "patients-docteur")
+    @JsonIgnore
+    @JsonManagedReference(value = "patient-medecin")
     private List<Patient> patients = new ArrayList<>();
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_centre")
+    @JsonBackReference(value = "medecin-centre")
+    private Centre centre;
 
 }

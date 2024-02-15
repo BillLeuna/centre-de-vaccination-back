@@ -49,7 +49,7 @@ public class AdministrateurCentreService {
                 .orElseThrow(() -> new RuntimeException("AdministrateurCentre not found!"));
 
         // Dissocier administrateurCentre des entités associées si nécessaire
-        // (Docteur, Centre, etc.)
+        // (Medecin, Centre, etc.)
 
         administrateurCentreRepository.delete(administrateurCentreToDelete);
     }

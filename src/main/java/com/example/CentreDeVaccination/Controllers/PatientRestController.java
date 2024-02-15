@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.CentreDeVaccination.Exceptions.ObjectNotFoundException;
-import com.example.CentreDeVaccination.Models.Docteur;
+import com.example.CentreDeVaccination.Models.Medecin;
 import com.example.CentreDeVaccination.Models.Patient;
 import com.example.CentreDeVaccination.Services.PatientService;
 
@@ -66,9 +66,9 @@ public class PatientRestController {
         return new ResponseEntity<>("Patient not found: " + ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping(path = "/getDocteur/{id}")
-    public Docteur getDocteur(@PathVariable Long id) {
-        return patientService.getDocteur(id);
+    @GetMapping(path = "/getMedecin/{id}")
+    public List<Medecin> getMedecins(@PathVariable Long id) {
+        return patientService.getMedecins(id);
     }
 
     @GetMapping(path = "/getByEmail/{email}")

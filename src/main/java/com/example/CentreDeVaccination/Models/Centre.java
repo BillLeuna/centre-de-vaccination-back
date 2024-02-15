@@ -12,7 +12,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString(of = "id")
-@EqualsAndHashCode(exclude = { "adresse", "docteurs" })
+@EqualsAndHashCode(exclude = { "adresse", "medecins", "patients" })
 @Table(name = "Centre")
 @NoArgsConstructor
 @AllArgsConstructor
@@ -26,13 +26,17 @@ public class Centre {
     @Column(name = "nom")
     private String nom;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_adresse")
     @JsonBackReference(value = "adresse-centre")
     private Adresse adresse;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JsonBackReference(value = "docteurs-centre")
-    private List<Docteur> docteurs = new ArrayList<>();
+    @JsonBackReference(value = "medecin-centre")
+    private List<Medecin> medecins = new ArrayList<>();
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonBackReference(value = "patient-centre")
+    private List<Patient> patients = new ArrayList<>();
 
 }
