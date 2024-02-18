@@ -13,7 +13,7 @@ import lombok.ToString;
 @Setter
 @ToString(of = "id")
 @EqualsAndHashCode
-@Table(name = "SuperAdmin")
+@Table(name = "SuperAdmins")
 @NoArgsConstructor
 @AllArgsConstructor
 public class SuperAdmin {

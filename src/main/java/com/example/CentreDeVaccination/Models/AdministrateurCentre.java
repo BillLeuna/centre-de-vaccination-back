@@ -29,7 +29,7 @@ import java.util.List;
 @Setter
 @ToString(of = "id")
 @EqualsAndHashCode(exclude = {"centre", "medecin"})
-@Table(name = "AdministrateursCentre")
+@Table(name = "AdministrateursCentres")
 @NoArgsConstructor
 @AllArgsConstructor
 public class AdministrateurCentre {
