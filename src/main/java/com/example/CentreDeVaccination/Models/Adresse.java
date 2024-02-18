@@ -36,17 +36,17 @@ public class Adresse {
     private String rue;
 
     @Column(name = "zip_code")
-    private Integer zip_code;
+    private Integer zipCode;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Medecin> medecins = new ArrayList<>();
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_patient")
     @JsonBackReference(value = "adresse-patient")
     private Patient patient;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_centre")
     @JsonBackReference(value = "adresse-centre")
     private Centre centre;

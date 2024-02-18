@@ -47,7 +47,7 @@ public class Medecin {
     @JsonManagedReference(value = "patient-medecin")
     private List<Patient> patients = new ArrayList<>();
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_centre")
     @JsonBackReference(value = "medecin-centre")
     private Centre centre;

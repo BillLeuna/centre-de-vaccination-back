@@ -56,7 +56,7 @@ public class AdresseService {
                 .map(adresse -> {
                     adresse.setVille(updatedAdresse.getVille());
                     adresse.setRue(updatedAdresse.getRue());
-                    adresse.setZip_code(updatedAdresse.getZip_code());
+                    adresse.setZipCode(updatedAdresse.getZipCode());
                     adresse.setPatient(updatedAdresse.getPatient());
                     adresse.setCentre(updatedAdresse.getCentre());
                     adresse.setMedecins(updatedAdresse.getMedecins());

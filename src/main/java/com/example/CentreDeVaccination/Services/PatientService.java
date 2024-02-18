@@ -61,6 +61,8 @@ public class PatientService {
                     patient.setEmail(updatedPatient.getEmail());
                     patient.setAdresse(updatedPatient.getAdresse());
                     patient.setMedecins(updatedPatient.getMedecins());
+                    patient.setDateDInscription(updatedPatient.getDateDInscription());
+                    patient.setTelephone(updatedPatient.getTelephone());
 
                     if (updatedPatient.getAdresse() != null) {
                         adresseRepository.save(updatedPatient.getAdresse());

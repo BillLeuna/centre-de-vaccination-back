@@ -40,10 +40,16 @@ public class Patient {
     @Column(name = "dateDeNaissance")
     private Date dateDeNaissance;
 
+    @Column(name = "dateDInscription")
+    private Date dateDInscription;
+
     @Column(name = "email")
     private String email;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @Column(name = "telephone")
+    private String telephone;
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_adresse")
     @JsonManagedReference(value = "adresse-patient")
     private Adresse adresse;
