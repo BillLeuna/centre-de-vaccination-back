@@ -51,8 +51,8 @@ public class PatientService {
         return patientRepository.findAll();
     }
 
-    public Patient update(Long id, Patient updatedPatient) {
-        return patientRepository.findById(id)
+    public Patient update(Patient updatedPatient) {
+        return patientRepository.findById(updatedPatient.getId())
                 .map(patient -> {
                     patient.setPrenom(updatedPatient.getPrenom());
                     patient.setNom(updatedPatient.getNom());
@@ -69,15 +69,11 @@ public class PatientService {
                     }
 
                     if (updatedPatient.getMedecins() != null) {
-                        for (Medecin medecin : updatedPatient.getMedecins()) {
-                            medecinRepository.save(medecin);
-                        }
+                        medecinRepository.saveAll(updatedPatient.getMedecins());
                     }
 
                     if (updatedPatient.getCentres() != null) {
-                        for (Centre centre : updatedPatient.getCentres()) {
-                            centreRepository.save(centre);
-                        }
+                        centreRepository.saveAll(updatedPatient.getCentres());
                     }
 
                     return patientRepository.save(updatedPatient);

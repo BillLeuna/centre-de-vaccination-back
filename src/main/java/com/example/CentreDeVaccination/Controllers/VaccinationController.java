@@ -3,6 +3,7 @@ package com.example.CentreDeVaccination.Controllers;
 import java.util.List;
 
 import com.example.CentreDeVaccination.Exceptions.ObjectNotFoundException;
+import com.example.CentreDeVaccination.Models.Medecin;
 import com.example.CentreDeVaccination.Models.Vaccination;
 import com.example.CentreDeVaccination.Services.VaccinationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ public class VaccinationController {
 
     @Autowired
     private VaccinationService vaccinationService;
-    
+
     @GetMapping("/get")
     public ResponseEntity<List<Vaccination>> getAllVaccinations() {
         List<Vaccination> vaccinations = vaccinationService.findAll();
@@ -36,9 +37,9 @@ public class VaccinationController {
         return new ResponseEntity<>(savedVaccination, HttpStatus.CREATED);
     }
 
-    @PutMapping("/update/{id}")
-    public ResponseEntity<Vaccination> updateVaccination(@PathVariable Long id, @RequestBody Vaccination updatedVaccination) {
-        Vaccination vaccination = vaccinationService.update(id, updatedVaccination);
+    @PutMapping("/update")
+    public ResponseEntity<Vaccination> updateVaccination(@RequestBody Vaccination updatedVaccination) {
+        Vaccination vaccination = vaccinationService.update(updatedVaccination);
         return new ResponseEntity<>(vaccination, HttpStatus.OK);
     }
 
@@ -51,5 +52,11 @@ public class VaccinationController {
     @ExceptionHandler
     public ResponseEntity<String> handle(ObjectNotFoundException ex) {
         return new ResponseEntity<>("Vaccination not found: " + ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @PutMapping("/vaccinate")
+    public ResponseEntity<Vaccination> vaccinate(@RequestBody Vaccination vaccination, @RequestBody Medecin medecin) {
+        Vaccination updatedVaccination = vaccinationService.validateVaccination(vaccination, medecin);
+        return new ResponseEntity<>(updatedVaccination, HttpStatus.OK);
     }
 }

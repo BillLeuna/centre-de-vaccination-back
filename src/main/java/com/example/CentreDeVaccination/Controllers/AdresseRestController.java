@@ -38,7 +38,7 @@ public class AdresseRestController {
 
     @PutMapping(path = "/update")
     public Adresse updateAdresse(@RequestBody Adresse adresse) {
-        return adresseService.update(adresse.getId().longValue(), adresse);
+        return adresseService.update(adresse);
     }
 
     @DeleteMapping(path = "/delete/{id}")

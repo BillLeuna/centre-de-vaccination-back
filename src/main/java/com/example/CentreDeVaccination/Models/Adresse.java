@@ -27,7 +27,7 @@ public class Adresse {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_adresse")
-    private Integer id;
+    private Long id;
 
     @Column(name = "ville")
     private String ville;
@@ -36,7 +36,7 @@ public class Adresse {
     private String rue;
 
     @Column(name = "zip_code")
-    private Integer zipCode;
+    private Long zipCode;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Medecin> medecins = new ArrayList<>();

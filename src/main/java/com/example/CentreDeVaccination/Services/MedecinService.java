@@ -45,8 +45,8 @@ public class MedecinService {
         return medecinRepository.findAll();
     }
 
-    public Medecin update(Long id, Medecin updatedMedecin) {
-        return medecinRepository.findById(id)
+    public Medecin update(Medecin updatedMedecin) {
+        return medecinRepository.findById(updatedMedecin.getId())
                 .map(medecin -> {
                     medecin.setPrenom(updatedMedecin.getPrenom());
                     medecin.setNom(updatedMedecin.getNom());
@@ -56,9 +56,7 @@ public class MedecinService {
                     medecin.setCentre(updatedMedecin.getCentre());
 
                     if (updatedMedecin.getPatients() != null) {
-                        for (Patient patient : updatedMedecin.getPatients()) {
-                            patientRepository.save(patient);
-                        }
+                        patientRepository.saveAll(updatedMedecin.getPatients());
                     }
 
                     if (updatedMedecin.getCentre() != null) {

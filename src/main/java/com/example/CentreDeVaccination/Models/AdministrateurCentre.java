@@ -48,13 +48,10 @@ public class AdministrateurCentre {
     @Column(name = "email")
     private String email;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
     @JoinColumn(name = "id_centre")
     @JsonBackReference(value = "administrateurCentre-centre")
     private Centre centre;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonManagedReference(value = "medecin-administrateurCentre")
-    private List<Medecin> medecin = new ArrayList<>();
 
 }

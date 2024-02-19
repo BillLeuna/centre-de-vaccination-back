@@ -51,8 +51,8 @@ public class AdresseService {
         return adresseRepository.findAll();
     }
 
-    public Adresse update(Long id, Adresse updatedAdresse) {
-        return adresseRepository.findById(id)
+    public Adresse update(Adresse updatedAdresse) {
+        return adresseRepository.findById(updatedAdresse.getId())
                 .map(adresse -> {
                     adresse.setVille(updatedAdresse.getVille());
                     adresse.setRue(updatedAdresse.getRue());
@@ -62,9 +62,7 @@ public class AdresseService {
                     adresse.setMedecins(updatedAdresse.getMedecins());
 
                     if (updatedAdresse.getMedecins() != null) {
-                        for (Medecin medecin : updatedAdresse.getMedecins()) {
-                            medecinRepository.save(medecin);
-                        }
+                        medecinRepository.saveAll(updatedAdresse.getMedecins());
                     }
 
                     if (updatedAdresse.getPatient() != null) {

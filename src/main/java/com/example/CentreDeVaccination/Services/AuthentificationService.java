@@ -35,8 +35,8 @@ public class AuthentificationService {
         return authentificationRepository.findAll();
     }
 
-    public Authentification update(Long id, Authentification updatedAuthentification) {
-        return authentificationRepository.findById(id)
+    public Authentification update(Authentification updatedAuthentification) {
+        return authentificationRepository.findById(updatedAuthentification.getId())
                 .map(authentification -> {
                     authentification.setEmail(updatedAuthentification.getEmail());
                     authentification.setMdp(updatedAuthentification.getMdp());

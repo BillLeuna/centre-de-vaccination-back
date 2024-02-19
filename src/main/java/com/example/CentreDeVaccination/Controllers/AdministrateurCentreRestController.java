@@ -51,7 +51,7 @@ public class AdministrateurCentreRestController {
 
     @PutMapping(path = "/update")
     public AdministrateurCentre updateAdministrateurCentre(@RequestBody AdministrateurCentre administrateurCentre) {
-        return administrateurCentreService.update(administrateurCentre.getId(), administrateurCentre);
+        return administrateurCentreService.update(administrateurCentre);
     }
 
     @DeleteMapping(path = "/delete{id}")

@@ -2,7 +2,10 @@ package com.example.CentreDeVaccination.Services;
 
 import com.example.CentreDeVaccination.Exceptions.ObjectNotFoundException;
 import com.example.CentreDeVaccination.Models.AdministrateurCentre;
+import com.example.CentreDeVaccination.Models.Medecin;
 import com.example.CentreDeVaccination.Repositories.AdministrateurCentreRepository;
+import com.example.CentreDeVaccination.Repositories.CentreRepository;
+import com.example.CentreDeVaccination.Repositories.MedecinRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +15,17 @@ import java.util.List;
 public class AdministrateurCentreService {
 
     private final AdministrateurCentreRepository administrateurCentreRepository;
+    private final CentreRepository centreRepository;
+    private final MedecinRepository medecinRepository;
 
     @Autowired
-    public AdministrateurCentreService(AdministrateurCentreRepository administrateurCentreRepository) {
+    public AdministrateurCentreService(AdministrateurCentreRepository administrateurCentreRepository,
+                                       CentreRepository centreRepository,
+                                       MedecinRepository medecinRepository) {
         this.administrateurCentreRepository = administrateurCentreRepository;
+        this.centreRepository = centreRepository;
+        this.medecinRepository = medecinRepository;
+
     }
 
     public AdministrateurCentre saveAdministrateurCentre(AdministrateurCentre administrateurCentre) {
@@ -31,13 +41,17 @@ public class AdministrateurCentreService {
         return administrateurCentreRepository.findAll();
     }
 
-    public AdministrateurCentre update(Long id, AdministrateurCentre updatedAdministrateurCentre) {
-        return administrateurCentreRepository.findById(id)
+    public AdministrateurCentre update(AdministrateurCentre updatedAdministrateurCentre) {
+        return administrateurCentreRepository.findById(updatedAdministrateurCentre.getId())
                 .map(administrateurCentre -> {
                     administrateurCentre.setPrenom(updatedAdministrateurCentre.getPrenom());
                     administrateurCentre.setNom(updatedAdministrateurCentre.getNom());
                     administrateurCentre.setEmail(updatedAdministrateurCentre.getEmail());
-                    // Ajouter d'autres attributs à mettre à jour selon les besoins
+                    administrateurCentre.setCentre(updatedAdministrateurCentre.getCentre());
+
+                    if(updatedAdministrateurCentre.getCentre() != null) {
+                        centreRepository.save(updatedAdministrateurCentre.getCentre());
+                    }
 
                     return administrateurCentreRepository.save(administrateurCentre);
                 })
@@ -47,9 +61,6 @@ public class AdministrateurCentreService {
     public void delete(long id) {
         AdministrateurCentre administrateurCentreToDelete = administrateurCentreRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("AdministrateurCentre not found!"));
-
-        // Dissocier administrateurCentre des entités associées si nécessaire
-        // (Medecin, Centre, etc.)
 
         administrateurCentreRepository.delete(administrateurCentreToDelete);
     }

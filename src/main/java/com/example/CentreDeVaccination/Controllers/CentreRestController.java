@@ -62,7 +62,7 @@ public class CentreRestController {
 
     @PutMapping(path = "/update")
     public Centre updateCentre(@RequestBody Centre centre) {
-        return centreService.update(centre.getId().longValue(), centre);
+        return centreService.update(centre);
     }
 
     @DeleteMapping(path = "/delete/{id}")

@@ -54,7 +54,7 @@ public class SuperAdminRestController {
 
     @PutMapping(path = "/update")
     public SuperAdmin updateSuperAdmin(@RequestBody SuperAdmin superAdmin) {
-        return superAdminService.update(superAdmin.getId(), superAdmin);
+        return superAdminService.update(superAdmin);
     }
 
     @DeleteMapping(path = "/delete/{id}")

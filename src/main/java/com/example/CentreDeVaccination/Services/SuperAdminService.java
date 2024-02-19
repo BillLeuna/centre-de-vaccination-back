@@ -35,8 +35,8 @@ public class SuperAdminService {
         return superAdminRepository.findAll();
     }
 
-    public SuperAdmin update(Long id, SuperAdmin updatedSuperAdmin) {
-        return superAdminRepository.findById(id)
+    public SuperAdmin update(SuperAdmin updatedSuperAdmin) {
+        return superAdminRepository.findById(updatedSuperAdmin.getId())
                 .map(superAdmin -> {
                     superAdmin.setPrenom(updatedSuperAdmin.getPrenom());
                     superAdmin.setNom(updatedSuperAdmin.getNom());

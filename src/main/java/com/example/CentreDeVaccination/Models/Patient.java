@@ -29,7 +29,7 @@ public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_patient")
-    private Integer id;
+    private Long id;
 
     @Column(name = "prenom")
     private String prenom;

@@ -29,7 +29,7 @@ public class AuthentificationRestController {
 
     @PutMapping(path = "/update")
     public Authentification updateAuthentification(@RequestBody Authentification authentification) {
-        return authentificationService.update(authentification.getId().longValue(), authentification);
+        return authentificationService.update(authentification);
     }
 
     @DeleteMapping(path = "/delete{id}")

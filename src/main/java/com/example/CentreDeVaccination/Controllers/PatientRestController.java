@@ -53,7 +53,7 @@ public class PatientRestController {
 
     @PutMapping(path = "/update")
     public Patient updatePatient(@RequestBody Patient patient) {
-        return patientService.update(patient.getId().longValue(), patient);
+        return patientService.update(patient);
     }
 
     @DeleteMapping(path = "/delete/{id}")

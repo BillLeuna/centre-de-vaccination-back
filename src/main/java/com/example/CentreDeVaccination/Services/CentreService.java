@@ -45,8 +45,8 @@ public class CentreService {
         return centreRepository.findAll();
     }
 
-    public Centre update(Long id, Centre updatedCentre) {
-        return centreRepository.findById(id)
+    public Centre update(Centre updatedCentre) {
+        return centreRepository.findById(updatedCentre.getId())
                 .map(centre -> {
                     centre.setNom(updatedCentre.getNom());
                     centre.setAdresse(updatedCentre.getAdresse());
@@ -58,15 +58,11 @@ public class CentreService {
                     }
 
                     if (updatedCentre.getMedecins() != null) {
-                        for (Medecin medecin : updatedCentre.getMedecins()) {
-                            medecinRepository.save(medecin);
-                        }
+                        medecinRepository.saveAll(updatedCentre.getMedecins());
                     }
 
                     if (updatedCentre.getPatients() != null) {
-                        for (Patient patient : updatedCentre.getPatients()) {
-                            patientRepository.save(patient);
-                        }
+                        patientRepository.saveAll(updatedCentre.getPatients());
                     }
 
                     return centreRepository.save(centre);

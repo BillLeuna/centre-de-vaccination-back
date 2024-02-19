@@ -3,6 +3,8 @@ package com.example.CentreDeVaccination.Services;
 import java.util.List;
 
 import com.example.CentreDeVaccination.Exceptions.ObjectNotFoundException;
+import com.example.CentreDeVaccination.Models.Medecin;
+import com.example.CentreDeVaccination.Models.StatutDossierPatient;
 import com.example.CentreDeVaccination.Models.Vaccination;
 import com.example.CentreDeVaccination.Repositories.VaccinationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +33,8 @@ public class VaccinationService {
         return vaccinationRepository.findAll();
     }
 
-    public Vaccination update(Long id, Vaccination updatedVaccination) {
-        return vaccinationRepository.findById(id)
+    public Vaccination update(Vaccination updatedVaccination) {
+        return vaccinationRepository.findById(updatedVaccination.getId())
                 .map(vaccination -> {
                     vaccination.setDateReservation(updatedVaccination.getDateReservation());
                     vaccination.setDateVaccination(updatedVaccination.getDateVaccination());
@@ -40,6 +42,7 @@ public class VaccinationService {
                     vaccination.setPatient(updatedVaccination.getPatient());
                     vaccination.setMedecin(updatedVaccination.getMedecin());
                     vaccination.setCentre(updatedVaccination.getCentre());
+
                     return vaccinationRepository.save(vaccination);
                 })
                 .orElseThrow(() -> new RuntimeException("Vaccination not found!"));
@@ -50,5 +53,11 @@ public class VaccinationService {
                 .orElseThrow(() -> new RuntimeException("Vaccination not found!"));
 
         vaccinationRepository.delete(vaccinationToDelete);
+    }
+
+    public Vaccination validateVaccination(Vaccination vaccination, Medecin medecin) {
+        vaccination.setStatutDossierPatient(StatutDossierPatient.vaccination);
+        vaccination.setMedecin(medecin);
+        return vaccinationRepository.save(vaccination);
     }
 }

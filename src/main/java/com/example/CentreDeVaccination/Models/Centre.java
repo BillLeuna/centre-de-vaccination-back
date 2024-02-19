@@ -21,7 +21,7 @@ public class Centre {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_centre")
-    private Integer id;
+    private Long id;
 
     @Column(name = "nom")
     private String nom;

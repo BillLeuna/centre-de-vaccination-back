@@ -52,7 +52,7 @@ public class MedecinRestController {
 
     @PutMapping(path = "/update")
     public Medecin updateMedecin(@RequestBody Medecin medecin) {
-        return medecinService.update(medecin.getId().longValue(), medecin);
+        return medecinService.update(medecin);
     }
 
     @DeleteMapping(path = "/delete{id}")
