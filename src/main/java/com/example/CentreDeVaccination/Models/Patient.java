@@ -49,18 +49,16 @@ public class Patient {
     @Column(name = "telephone")
     private String telephone;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_adresse")
-    @JsonManagedReference(value = "adresse-patient")
     private Adresse adresse;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JsonIgnore
-    @JsonBackReference(value = "patient-medecin")
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JsonBackReference(value = "medecins-patient")
     private List<Medecin> medecins = new ArrayList<>();
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JsonBackReference(value = "patient-centre")
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JsonBackReference(value = "centres-patient")
     private List<Centre> centres = new ArrayList<>();
 
 }

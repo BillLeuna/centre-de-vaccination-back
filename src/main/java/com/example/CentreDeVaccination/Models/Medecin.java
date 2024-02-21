@@ -42,14 +42,12 @@ public class Medecin {
     @Column(name = "telephone")
     private String telephone;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JsonIgnore
-    @JsonManagedReference(value = "patient-medecin")
+    @OneToMany(fetch = FetchType.EAGER)
+    @JsonBackReference(value = "patients-medecin")
     private List<Patient> patients = new ArrayList<>();
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_centre")
-    @JsonBackReference(value = "medecin-centre")
     private Centre centre;
 
 }

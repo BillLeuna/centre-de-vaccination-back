@@ -38,17 +38,16 @@ public class Adresse {
     @Column(name = "zip_code")
     private Long zipCode;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER)
+    @JsonBackReference(value = "medecins-adresse")
     private List<Medecin> medecins = new ArrayList<>();
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_patient")
-    @JsonBackReference(value = "adresse-patient")
     private Patient patient;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_centre")
-    @JsonBackReference(value = "adresse-centre")
     private Centre centre;
 
 }

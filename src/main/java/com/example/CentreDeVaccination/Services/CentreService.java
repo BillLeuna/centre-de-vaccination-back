@@ -1,5 +1,6 @@
 package com.example.CentreDeVaccination.Services;
 
+import com.example.CentreDeVaccination.Models.Adresse;
 import com.example.CentreDeVaccination.Models.Medecin;
 import com.example.CentreDeVaccination.Models.Patient;
 import com.example.CentreDeVaccination.Repositories.AdresseRepository;
@@ -94,5 +95,15 @@ public class CentreService {
         }
 
         centreRepository.delete(centreToDelete);
+    }
+
+    public Adresse getAdresseCentre(Long id) {
+        Centre centre = centreRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Centre not found with id: " + id));
+        if(centre != null) {
+            return centre.getAdresse();
+        }
+        else {
+            return null;
+        }
     }
 }

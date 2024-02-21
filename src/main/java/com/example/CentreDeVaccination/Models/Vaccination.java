@@ -29,13 +29,16 @@ public class Vaccination {
     @Column(name = "statutDossierPatient")
     private StatutDossierPatient statutDossierPatient;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_patient")
     private Patient patient;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_medecin")
     private Medecin medecin;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_centre")
     private Centre centre;
 
 

@@ -1,5 +1,6 @@
 package com.example.CentreDeVaccination.Controllers;
 
+import com.example.CentreDeVaccination.Models.Adresse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -73,5 +74,10 @@ public class CentreRestController {
     @ExceptionHandler
     public ResponseEntity<String> handle(ObjectNotFoundException ex) {
         return new ResponseEntity<>("Centre not found: " + ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping(path = "/getAdresse/{id}")
+    public Adresse getAdresseCentre(@PathVariable Long id) {
+        return centreService.getAdresseCentre(id);
     }
 }

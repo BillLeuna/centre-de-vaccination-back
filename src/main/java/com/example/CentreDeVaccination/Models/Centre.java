@@ -28,15 +28,14 @@ public class Centre {
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_adresse")
-    @JsonBackReference(value = "adresse-centre")
     private Adresse adresse;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JsonBackReference(value = "medecin-centre")
+    @OneToMany(fetch = FetchType.EAGER)
+    @JsonBackReference(value = "medecins-centre")
     private List<Medecin> medecins = new ArrayList<>();
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JsonBackReference(value = "patient-centre")
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JsonBackReference(value = "patients-centre")
     private List<Patient> patients = new ArrayList<>();
 
 }

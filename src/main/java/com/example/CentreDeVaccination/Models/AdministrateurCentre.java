@@ -48,9 +48,8 @@ public class AdministrateurCentre {
     @Column(name = "email")
     private String email;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_centre")
-    @JsonBackReference(value = "administrateurCentre-centre")
     private Centre centre;
 
 
