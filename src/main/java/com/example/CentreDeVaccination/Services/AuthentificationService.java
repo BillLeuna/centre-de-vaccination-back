@@ -39,7 +39,7 @@ public class AuthentificationService {
         return authentificationRepository.findById(updatedAuthentification.getId())
                 .map(authentification -> {
                     authentification.setEmail(updatedAuthentification.getEmail());
-                    authentification.setMdp(updatedAuthentification.getMdp());
+                    authentification.setMotDePasse(updatedAuthentification.getMotDePasse());
 
                     return authentificationRepository.save(authentification);
                 })
@@ -51,5 +51,14 @@ public class AuthentificationService {
                 .orElseThrow(() -> new RuntimeException("Authentification not found!"));
 
         authentificationRepository.delete(authentificationToDelete);
+    }
+
+    public Authentification authenticate(String email, String mdp) {
+        Authentification auth = authentificationRepository.findByEmailAndMotDePasse(email, mdp);
+        if (auth != null) {
+            return auth;
+        } else {
+            throw new RuntimeException("Invalid credentials");
+        }
     }
 }

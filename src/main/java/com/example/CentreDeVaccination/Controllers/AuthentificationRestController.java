@@ -21,7 +21,7 @@ public class AuthentificationRestController {
         return authentificationService.findOneById(id);
     }
 
-    @PostMapping(path = "/create")
+    @PostMapping(path = "/create", consumes = "application/json;charset=UTF-8")
     public ResponseEntity<Authentification> createAuthentification(@RequestBody Authentification authentification) {
         Authentification savedAuthentification = authentificationService.saveAuthentification(authentification);
         return new ResponseEntity<>(savedAuthentification, HttpStatus.CREATED);
@@ -40,6 +40,16 @@ public class AuthentificationRestController {
     @ExceptionHandler
     public ResponseEntity<String> handle(ObjectNotFoundException ex) {
         return new ResponseEntity<>("Authentification not found: " + ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @PostMapping(path = "/login")
+    public ResponseEntity<?> authenticateUser(@RequestBody Authentification authentification) {
+        try {
+            Authentification authenticatedUser = authentificationService.authenticate(authentification.getEmail(), authentification.getMotDePasse());
+            return ResponseEntity.ok(authenticatedUser);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
+        }
     }
 
 }

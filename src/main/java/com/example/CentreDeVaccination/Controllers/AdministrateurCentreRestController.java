@@ -54,7 +54,7 @@ public class AdministrateurCentreRestController {
         return administrateurCentreService.update(administrateurCentre);
     }
 
-    @DeleteMapping(path = "/delete{id}")
+    @DeleteMapping(path = "/delete/{id}")
     public void deleteAdministrateurCentre(@PathVariable Long id) {
         administrateurCentreService.delete(id);
     }

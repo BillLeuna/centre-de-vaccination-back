@@ -21,5 +21,5 @@ public class Authentification {
     private String email;
 
     @Column(name = "mdp")
-    private String mdp;
+    private String motDePasse;
 }
