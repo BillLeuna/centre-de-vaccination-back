@@ -22,4 +22,7 @@ public class Authentification {
 
     @Column(name = "mdp")
     private String motDePasse;
+
+    @Column(name = "role")
+    private String roleUtilisateur;
 }

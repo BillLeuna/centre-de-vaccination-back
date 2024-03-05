@@ -32,7 +32,7 @@ public class AuthentificationRestController {
         return authentificationService.update(authentification);
     }
 
-    @DeleteMapping(path = "/delete{id}")
+    @DeleteMapping(path = "/delete/{id}")
     public void deleteAuthentification(@PathVariable Long id) {
         authentificationService.delete(id);
     }
@@ -45,7 +45,7 @@ public class AuthentificationRestController {
     @PostMapping(path = "/login")
     public ResponseEntity<?> authenticateUser(@RequestBody Authentification authentification) {
         try {
-            Authentification authenticatedUser = authentificationService.authenticate(authentification.getEmail(), authentification.getMotDePasse());
+            Authentification authenticatedUser = authentificationService.authenticate(authentification.getEmail(), authentification.getMotDePasse(), authentification.getRoleUtilisateur());
             return ResponseEntity.ok(authenticatedUser);
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");

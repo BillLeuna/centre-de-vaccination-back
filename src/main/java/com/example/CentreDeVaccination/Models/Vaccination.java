@@ -37,7 +37,7 @@ public class Vaccination {
     @JoinColumn(name = "id_medecin")
     private Medecin medecin;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_centre")
     private Centre centre;
 

@@ -40,6 +40,7 @@ public class AuthentificationService {
                 .map(authentification -> {
                     authentification.setEmail(updatedAuthentification.getEmail());
                     authentification.setMotDePasse(updatedAuthentification.getMotDePasse());
+                    authentification.setRoleUtilisateur(updatedAuthentification.getRoleUtilisateur());
 
                     return authentificationRepository.save(authentification);
                 })
@@ -53,8 +54,8 @@ public class AuthentificationService {
         authentificationRepository.delete(authentificationToDelete);
     }
 
-    public Authentification authenticate(String email, String mdp) {
-        Authentification auth = authentificationRepository.findByEmailAndMotDePasse(email, mdp);
+    public Authentification authenticate(String email, String mdp, String roleUtilisateur) {
+        Authentification auth = authentificationRepository.findByEmailAndMotDePasseAndRoleUtilisateur(email, mdp, roleUtilisateur);
         if (auth != null) {
             return auth;
         } else {

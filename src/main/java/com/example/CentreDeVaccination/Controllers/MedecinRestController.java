@@ -55,7 +55,7 @@ public class MedecinRestController {
         return medecinService.update(medecin);
     }
 
-    @DeleteMapping(path = "/delete{id}")
+    @DeleteMapping(path = "/delete/{id}")
     public void deleteMedecin(@PathVariable Long id) {
         medecinService.delete(id);
     }
