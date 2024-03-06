@@ -2,17 +2,23 @@ package com.example.CentreDeVaccination.Services;
 
 import java.util.List;
 
+<<<<<<< Updated upstream
+=======
+import com.example.CentreDeVaccination.Models.Centre;
+import com.example.CentreDeVaccination.Models.Medecin;
+import com.example.CentreDeVaccination.Repositories.*;
+>>>>>>> Stashed changes
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.CentreDeVaccination.Exceptions.ObjectNotFoundException;
 import com.example.CentreDeVaccination.Models.Docteur;
 import com.example.CentreDeVaccination.Models.Patient;
-import com.example.CentreDeVaccination.Repositories.PatientRepository;
 
 @Service
 public class PatientService {
 
+<<<<<<< Updated upstream
     public PatientRepository patientRepository;
     public DocteurService docteurService;
 
@@ -20,6 +26,25 @@ public class PatientService {
     public PatientService(PatientRepository patientRepository, DocteurService docteurService) {
         this.patientRepository = patientRepository;
         this.docteurService = docteurService;
+=======
+    private PatientRepository patientRepository;
+    private MedecinRepository medecinRepository;
+    private AdresseRepository adresseRepository;
+    private CentreRepository centreRepository;
+    private AuthentificationRepository authentificationRepository;
+
+    @Autowired
+    public PatientService(PatientRepository patientRepository,
+                          MedecinRepository medecinRepository,
+                          AdresseRepository adresseRepository,
+                          CentreRepository centreRepository,
+                          AuthentificationRepository authentificationRepository) {
+        this.patientRepository = patientRepository;
+        this.medecinRepository = medecinRepository;
+        this.adresseRepository = adresseRepository;
+        this.centreRepository = centreRepository;
+        this.authentificationRepository = authentificationRepository;
+>>>>>>> Stashed changes
     }
 
     public PatientService() {
@@ -27,6 +52,7 @@ public class PatientService {
     }
 
     public Patient savePatient(Patient patient) {
+
         return patientRepository.save(patient);
     }
 
