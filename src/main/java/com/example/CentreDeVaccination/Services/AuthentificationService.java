@@ -62,4 +62,9 @@ public class AuthentificationService {
             throw new RuntimeException("Invalid credentials");
         }
     }
+
+    public boolean doesAuthentificationExists(String email) {
+        Authentification authentification = authentificationRepository.findByEmail(email);
+        return authentification != null;
+    }
 }

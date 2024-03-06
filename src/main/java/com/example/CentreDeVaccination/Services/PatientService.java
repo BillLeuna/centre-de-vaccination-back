@@ -2,6 +2,7 @@ package com.example.CentreDeVaccination.Services;
 
 import java.util.List;
 
+import com.example.CentreDeVaccination.Models.Authentification;
 import com.example.CentreDeVaccination.Models.Centre;
 import com.example.CentreDeVaccination.Models.Medecin;
 import com.example.CentreDeVaccination.Repositories.AdresseRepository;
@@ -21,16 +22,19 @@ public class PatientService {
     private MedecinRepository medecinRepository;
     private AdresseRepository adresseRepository;
     private CentreRepository centreRepository;
+    private AuthentificationService authentificationService;
 
     @Autowired
     public PatientService(PatientRepository patientRepository,
                           MedecinRepository medecinRepository,
                           AdresseRepository adresseRepository,
-                          CentreRepository centreRepository) {
+                          CentreRepository centreRepository,
+                          AuthentificationService authentificationService) {
         this.patientRepository = patientRepository;
         this.medecinRepository = medecinRepository;
         this.adresseRepository = adresseRepository;
         this.centreRepository = centreRepository;
+        this.authentificationService = authentificationService;
     }
 
     public PatientService() {
@@ -38,6 +42,13 @@ public class PatientService {
     }
 
     public Patient savePatient(Patient patient) {
+        if (!(authentificationService.doesAuthentificationExists(patient.getEmail()))) {
+            Authentification auth = new Authentification();
+            auth.setEmail(patient.getEmail());
+            auth.setMotDePasse("to change");
+            auth.setRoleUtilisateur("patient");
+            authentificationService.saveAuthentification(auth);
+        }
         return patientRepository.save(patient);
     }
 

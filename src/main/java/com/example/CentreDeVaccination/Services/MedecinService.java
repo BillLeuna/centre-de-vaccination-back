@@ -2,6 +2,7 @@ package com.example.CentreDeVaccination.Services;
 
 import java.util.List;
 
+import com.example.CentreDeVaccination.Models.Authentification;
 import com.example.CentreDeVaccination.Repositories.CentreRepository;
 import com.example.CentreDeVaccination.Repositories.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,14 +19,17 @@ public class MedecinService {
     private MedecinRepository medecinRepository;
     private PatientRepository patientRepository;
     private CentreRepository centreRepository;
+    private AuthentificationService authentificationService;
 
     @Autowired
     public MedecinService(MedecinRepository medecinRepository,
                           PatientRepository patientRepository,
-                          CentreRepository centreRepository) {
+                          CentreRepository centreRepository,
+                          AuthentificationService authentificationService) {
         this.medecinRepository = medecinRepository;
         this.patientRepository = patientRepository;
         this.centreRepository = centreRepository;
+        this.authentificationService = authentificationService;
     }
 
     public MedecinService() {
@@ -33,6 +37,13 @@ public class MedecinService {
     }
 
     public Medecin saveMedecin(Medecin medecin) {
+        if (!(authentificationService.doesAuthentificationExists(medecin.getEmail()))) {
+            Authentification auth = new Authentification();
+            auth.setEmail(medecin.getEmail());
+            auth.setMotDePasse("to change");
+            auth.setRoleUtilisateur("medecin");
+            authentificationService.saveAuthentification(auth);
+        }
         return medecinRepository.save(medecin);
     }
 

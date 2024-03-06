@@ -1,6 +1,7 @@
 package com.example.CentreDeVaccination.Services;
 
 import com.example.CentreDeVaccination.Exceptions.ObjectNotFoundException;
+import com.example.CentreDeVaccination.Models.Authentification;
 import com.example.CentreDeVaccination.Models.SuperAdmin;
 import com.example.CentreDeVaccination.Repositories.SuperAdminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +13,13 @@ import java.util.List;
 public class SuperAdminService {
 
     private SuperAdminRepository superAdminRepository;
+    private AuthentificationService authentificationService;
 
     @Autowired
-    public SuperAdminService(SuperAdminRepository superAdminRepository) {
+    public SuperAdminService(SuperAdminRepository superAdminRepository,
+                             AuthentificationService authentificationService) {
         this.superAdminRepository = superAdminRepository;
+        this.authentificationService = authentificationService;
     }
 
     public SuperAdminService() {
@@ -23,6 +27,13 @@ public class SuperAdminService {
     }
 
     public SuperAdmin saveSuperAdmin(SuperAdmin superAdmin) {
+        if (!(authentificationService.doesAuthentificationExists(superAdmin.getEmail()))) {
+            Authentification auth = new Authentification();
+            auth.setEmail(superAdmin.getEmail());
+            auth.setMotDePasse("to change");
+            auth.setRoleUtilisateur("superAdmin");
+            authentificationService.saveAuthentification(auth);
+        }
         return superAdminRepository.save(superAdmin);
     }
 

@@ -2,6 +2,7 @@ package com.example.CentreDeVaccination.Services;
 
 import com.example.CentreDeVaccination.Exceptions.ObjectNotFoundException;
 import com.example.CentreDeVaccination.Models.AdministrateurCentre;
+import com.example.CentreDeVaccination.Models.Authentification;
 import com.example.CentreDeVaccination.Models.Medecin;
 import com.example.CentreDeVaccination.Repositories.AdministrateurCentreRepository;
 import com.example.CentreDeVaccination.Repositories.CentreRepository;
@@ -16,19 +17,25 @@ public class AdministrateurCentreService {
 
     private final AdministrateurCentreRepository administrateurCentreRepository;
     private final CentreRepository centreRepository;
-    private final MedecinRepository medecinRepository;
+    private final AuthentificationService authentificationService;
 
     @Autowired
     public AdministrateurCentreService(AdministrateurCentreRepository administrateurCentreRepository,
                                        CentreRepository centreRepository,
-                                       MedecinRepository medecinRepository) {
+                                       AuthentificationService authentificationService) {
         this.administrateurCentreRepository = administrateurCentreRepository;
         this.centreRepository = centreRepository;
-        this.medecinRepository = medecinRepository;
-
+        this.authentificationService = authentificationService;
     }
 
     public AdministrateurCentre saveAdministrateurCentre(AdministrateurCentre administrateurCentre) {
+        if (!(authentificationService.doesAuthentificationExists(administrateurCentre.getEmail()))) {
+            Authentification auth = new Authentification();
+            auth.setEmail(administrateurCentre.getEmail());
+            auth.setMotDePasse("to change");
+            auth.setRoleUtilisateur("adminCentre");
+            authentificationService.saveAuthentification(auth);
+        }
         return administrateurCentreRepository.save(administrateurCentre);
     }
 
